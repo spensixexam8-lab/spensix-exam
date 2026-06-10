@@ -17,5 +17,7 @@
     <preference name="AndroidXEnabled" value="true" />
     <preference name="GradleVersion" value="8.7" />
     
+    <preference name="android-targetSdkVersion" value="30" />
+    
     <plugin name="cordova-plugin-kiosk" spec="https://github.com/hkalina/cordova-plugin-kiosk.git" />
 </widget>
