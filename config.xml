@@ -15,6 +15,7 @@
     
     <preference name="LogLevel" value="DEBUG" />
     <preference name="AndroidXEnabled" value="true" />
+    <preference name="GradleVersion" value="8.7" />
     
-    <plugin name="cordova-plugin-kiosk" spec="~0.1.1" />
+    <plugin name="cordova-plugin-kiosk" spec="https://github.com/hkalina/cordova-plugin-kiosk.git" />
 </widget>
