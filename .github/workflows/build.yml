@@ -22,6 +22,12 @@ jobs:
       - name: Install Cordova
         run: npm install -g cordova
 
+      - name: Download dan Tambal Plugin Kiosk Langsung dari Akar
+        run: |
+          git clone https://github.com/hkalina/cordova-plugin-kiosk.git local-plugin-kiosk
+          # Memasukkan aturan keamanan Android 12+ langsung ke cetakan asli plugin
+          sed -i 's/<receiver android:name="jk.cordova.plugin.kiosk.MyPackageReplacedEventReceiver">/<receiver android:name="jk.cordova.plugin.kiosk.MyPackageReplacedEventReceiver" android:exported="true">/g' local-plugin-kiosk/plugin.xml
+
       - name: Generate Cordova Project
         run: |
           mkdir cordova-app
@@ -30,13 +36,9 @@ jobs:
           cp ../config.xml ./config.xml
           cordova platform add android
           
-      - name: Compile to APK with Ninja Patch
+      - name: Compile to APK
         run: |
           cd cordova-app
-          # 🥷 SCRIPT NINJA: Menyisipkan android:exported="true" secara paksa ke sistem Android 12+
-          sed -i 's/<receiver android:name="jk.cordova.plugin.kiosk.MyPackageReplacedEventReceiver">/<receiver android:name="jk.cordova.plugin.kiosk.MyPackageReplacedEventReceiver" android:exported="true">/g' platforms/android/app/src/main/AndroidManifest.xml
-          
-          # Mulai cetak APK
           cordova build android --debug
 
       - name: Upload Hasil APK
