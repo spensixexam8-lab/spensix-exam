@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.spensix.smartexam" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Spensix Smart Exam</name>
+    <description>Aplikasi Ujian Aman Spensix Smart Exam</description>
+    <author email="admin@spensix.sch.id" href="https://script.google.com">Spensix Dev</author>
+    
+    <content src="https://script.google.com/macros/s/AKfycbyMSQHlPRAR7gf1Y9p1nFRcCl_DTrIAcffpdXiXWRxsUzDJ0TM6qp7rCOX6HbKKTNU24w/exec" />
+    
+    <access origin="*" />
+    <allow-navigation href="https://script.google.com/*" />
+    <allow-navigation href="https://script.googleusercontent.com/*" />
+    <allow-navigation href="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    
+    <preference name="LogLevel" value="DEBUG" />
+    <preference name="AndroidXEnabled" value="true" />
+    
+    <plugin name="cordova-plugin-kiosk" spec="~0.1.1" />
+</widget>
