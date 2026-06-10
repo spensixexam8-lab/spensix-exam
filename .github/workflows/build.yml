@@ -1,6 +1,6 @@
 name: Build Android APK Spensix
 on:
-  workflow_dispatch: # Agar bisa kita klik tombol "Run" manual
+  workflow_dispatch:
 
 jobs:
   build:
@@ -30,9 +30,13 @@ jobs:
           cp ../config.xml ./config.xml
           cordova platform add android
           
-      - name: Compile to APK
+      - name: Compile to APK with Ninja Patch
         run: |
           cd cordova-app
+          # 🥷 SCRIPT NINJA: Menyisipkan android:exported="true" secara paksa ke sistem Android 12+
+          sed -i 's/<receiver android:name="jk.cordova.plugin.kiosk.MyPackageReplacedEventReceiver">/<receiver android:name="jk.cordova.plugin.kiosk.MyPackageReplacedEventReceiver" android:exported="true">/g' platforms/android/app/src/main/AndroidManifest.xml
+          
+          # Mulai cetak APK
           cordova build android --debug
 
       - name: Upload Hasil APK
